@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>創業計画書</title>
+    <style>
+        body { font-family: 'Yu Gothic', 'Meiryo', sans-serif; font-size: 10pt; width: 800px; margin: 0 auto; padding: 20px;}
+        h1 { font-size: 16pt; text-align: center; margin-bottom: 20px; }
+        h2 { font-size: 12pt; border-bottom: 2px solid #333; padding-bottom: 5px; margin-top: 20px;}
+        table { width: 100%; border-collapse: collapse; margin-bottom: 15px;}
+        th, td { border: 1px solid #333; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; font-weight: bold; }
+        .center { text-align: center; }
+        .right { text-align: right; }
+    </style>
+</head>
+<body>
+
+    <h1>日本政策金融公庫 創業計画書 (生成データ)</h1>
+
+    <h2>1. 創業の動機・ビジョン</h2>
+    <p>{{ data.motive | nl2br }}</p>
+
+    <h2>2. 経営者の略歴等</h2>
+    <p>{{ data.career | nl2br }}</p>
+
+    <h2>3. 取扱商品・サービス</h2>
+    <p>{{ data.product_service | nl2br }}</p>
+
+    <div style="display: flex;">
+        <div style="width: 49%; margin-right: 2%;">
+            <h3>顧客セグメント (BMC)</h3>
+            <p>{{ data.target_customer | nl2br }}</p>
+        </div>
+        <div style="width: 49%;">
+            <h3>販売/提供チャネル (BMC)</h3>
+            <p>{{ data.channels | nl2br }}</p>
+        </div>
+    </div>
+
+    <h2>4. 従業員計画</h2>
+    <table>
+        <tr>
+            <th style="width: 30%;">役職/職種</th>
+            <th style="width: 20%;" class="center">人数</th>
+            <th style="width: 50%;">備考（採用予定時期など）</th>
+        </tr>
+        {% for emp in data.employees %}
+        <tr>
+            <td>{{ emp.position }}</td>
+            <td class="center">{{ emp.count }}</td>
+            <td>月給概算: ¥ {{ "{:,.0f}".format(emp.monthly_salary) }}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <th>合計</th>
+            <td class="center">{{ data.employees_summary }}名</td>
+            <td></td>
+        </tr>
+    </table>
+
+    <h2>5. 必要な資金と調達方法</h2>
+    <table>
+        <tr>
+            <th style="width: 40%;">資金使途</th>
+            <th style="width: 30%;" class="right">金額 (円)</th>
+            <th style="width: 30%;">調達方法</th>
+            <th style="width: 30%;" class="right">金額 (円)</th>
+        </tr>
+        <tr>
+            <td>設備資金（内装、機械、車両など）</td>
+            <td class="right">¥ {{ "{:,.0f}".format(data.equip_cost) }}</td>
+            <td>自己資金</td>
+            <td class="right">¥ {{ "{:,.0f}".format(data.equity) }}</td>
+        </tr>
+        <tr>
+            <td>運転資金（仕入、人件費、家賃など）</td>
+            <td class="right">¥ {{ "{:,.0f}".format(data.operate_cost) }}</td>
+            <td>**借入希望額**</td>
+            <td class="right">¥ {{ "{:,.0f}".format(data.loan_request) }}</td>
+        </tr>
+        <tr>
+            <th>必要資金合計</th>
+            <th class="right">¥ {{ "{:,.0f}".format(total_needed) }}</th>
+            <th>調達方法合計</th>
+            <th class="right">¥ {{ "{:,.0f}".format(total_needed) }}</th>
+        </tr>
+    </table>
+    
+    <p>借入希望概要：金額 ¥ {{ "{:,.0f}".format(data.loan_request) }}、返済期間 {{ data.loan_term }}ヶ月、想定金利 {{ data.loan_rate }}%</p>
+
+</body>
+</html>

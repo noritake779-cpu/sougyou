@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>事業の見通し (10年収支計画)</title>
+    <style>
+        body { font-family: 'Yu Gothic', 'Meiryo', sans-serif; font-size: 8pt; }
+        h1 { font-size: 14pt; text-align: center; margin-bottom: 10px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #333; padding: 4px; text-align: right; }
+        th { background-color: #f2f2f2; font-weight: bold; text-align: center; }
+        .header-row th { background-color: #ccc; }
+    </style>
+</head>
+<body>
+
+    <h1>別紙：事業の見通し（10年間収支計画）</h1>
+    <p style="text-align: right; font-size: 9pt;">（単位：円）</p>
+
+    {{ df | safe }}
+
+</body>
+</html>
