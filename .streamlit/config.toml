@@ -1,0 +1,29 @@
+[theme]
+# アプリのメインカラー（信頼感のあるネイビーブルー）
+primaryColor = "#003366"
+# 全体の背景色（白）
+backgroundColor = "#FFFFFF"
+# サイドバーや入力ボックスの背景色（薄いグレー）
+secondaryBackgroundColor = "#F7F9FB"
+# 文字の色
+textColor = "#262730"
+# フォント（標準的なゴシック体）
+font = "sans serif"
+
+[browser]
+# Streamlitへの利用統計送信をオフにする
+gatherUsageStats = false
+
+[client]
+# 右上の「Deploy」ボタンなどを隠し、アプリをスッキリ見せる
+toolbarMode = "minimal"
+
+[server]
+# クラウドサーバー実行用の安定化設定
+headless = true
+enableCORS = false
+enableXsrfProtection = false
+
+[ui]
+# サイドバーを最初から開いておく設定
+hideSidebarNav = false
